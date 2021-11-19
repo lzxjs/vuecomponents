@@ -4,12 +4,12 @@
  * @Author: 番茄
  * @Date: 2021-11-12 15:35:18
  * @LastEditors: 番茄
- * @LastEditTime: 2021-11-17 09:43:22
+ * @LastEditTime: 2021-11-19 15:16:57
  */
 import { createApp, defineComponent, h, reactive } from 'vue'
 // import App from './App.vue'
-import HelloWorld from './components/HelloWorld.vue'
-
+// import HelloWorld from './components/HelloWorld.vue'
+import App from './App'
 // h函数是对createVNode的进一步封装使用
 // const App = defineComponent({
 //   render() {
@@ -22,20 +22,20 @@ import HelloWorld from './components/HelloWorld.vue'
 //   },
 // })
 
-const App = defineComponent({
-  setup() {
-    const state = reactive({
-      name: 'fanqie',
-    })
+// const App = defineComponent({
+//   setup() {
+//     const state = reactive({
+//       name: 'fanqie',
+//     })
 
-    return () => {
-      return h('div', { id: 'app' }, [
-        h('img', {
-          src: '',
-        }),
-        h('p', state.name),
-      ])
-    }
-  },
-})
+//     return () => {
+//       return h('div', { id: 'app' }, [
+//         h('img', {
+//           src: '',
+//         }),
+//         h('p', state.name),
+//       ])
+//     }
+//   },
+// })
 createApp(App).mount('#app')
