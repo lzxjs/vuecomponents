@@ -4,10 +4,12 @@
  * @Author: 番茄
  * @Date: 2021-11-12 15:35:18
  * @LastEditors: 番茄
- * @LastEditTime: 2021-11-16 15:51:24
+ * @LastEditTime: 2021-11-19 15:48:02
 -->
 <template>
-  <div class="hello"></div>
+  <div class="hello">
+    {{ msg }}
+  </div>
 </template>
 
 <script lang="ts">
@@ -16,7 +18,10 @@ import { defineComponent } from 'vue'
 export default defineComponent({
   name: 'HelloWorld',
   props: {
-    msg: String,
+    msg: {
+      type: String,
+      required: true,
+    },
   },
 })
 </script>
