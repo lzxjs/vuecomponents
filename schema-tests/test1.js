@@ -4,7 +4,7 @@
  * @Author: 番茄
  * @Date: 2021-11-22 11:48:26
  * @LastEditors: 番茄
- * @LastEditTime: 2021-11-22 11:48:27
+ * @LastEditTime: 2021-11-22 14:52:14
  */
 /*
  * @Descripttion: 纵有千古，横有八荒，前途似海，来日方长。
@@ -15,7 +15,7 @@
  * @LastEditTime: 2021-11-22 11:24:55
  */
 const Ajv = require('ajv')
-
+// require("ajv-formats")(Ajv)
 // const schema = {
 //   type: 'string',
 //   minLength: 10
@@ -26,7 +26,7 @@ const schema = {
   properties: {
     name: {
       type: 'string',
-      maxLength: 5,
+      format: 'test'
     },
     age: {
       type: 'number',
@@ -45,9 +45,13 @@ const schema = {
 }
 
 const ajv = new Ajv()
+ajv.addFormat('test', (data) => {
+  console.log(data);
+  return data === 'fanqie'
+})
 const validate = ajv.compile(schema)
 const valid = validate({
-  name: 'fanqi',
+  name: 'fanqie',
   age: 18,
   pets: ['123', '456'],
   isWorker: false,
