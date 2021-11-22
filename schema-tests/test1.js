@@ -4,7 +4,7 @@
  * @Author: 番茄
  * @Date: 2021-11-22 11:48:26
  * @LastEditors: 番茄
- * @LastEditTime: 2021-11-22 15:31:02
+ * @LastEditTime: 2021-11-22 15:36:57
  */
 /*
  * @Descripttion: 纵有千古，横有八荒，前途似海，来日方长。
@@ -15,7 +15,7 @@
  * @LastEditTime: 2021-11-22 11:24:55
  */
 const Ajv = require('ajv')
-// require("ajv-formats")(Ajv)
+const localize = require('ajv-i18n');
 // const schema = {
 //   type: 'string',
 //   minLength: 10
@@ -68,4 +68,7 @@ const valid = validate({
   pets: ['123', '456'],
   isWorker: false,
 })
-if (!valid) console.log(validate.errors)
+if (!valid) {
+  localize.zh(validate.errors);
+  console.log(validate.errors)
+}
