@@ -4,7 +4,7 @@
  * @Author: 番茄
  * @Date: 2021-11-22 11:48:26
  * @LastEditors: 番茄
- * @LastEditTime: 2021-11-22 15:36:57
+ * @LastEditTime: 2021-11-22 16:46:17
  */
 /*
  * @Descripttion: 纵有千古，横有八荒，前途似海，来日方长。
@@ -26,8 +26,12 @@ const schema = {
   properties: {
     name: {
       type: 'string',
+      // minLength: 10,
+      errorMessage: {
+        type: '必须是字符串'
+      },
       // format: 'test'
-      test: false
+      // test: false
     },
     age: {
       type: 'number',
@@ -45,7 +49,8 @@ const schema = {
   required: ['name', 'age'],
 }
 
-const ajv = new Ajv()
+const ajv = new Ajv({ allErrors: true, jsonPointers: true })
+require('ajv-errors')(ajv)
 // ajv.addFormat('test', (data) => {
 //   console.log(data);
 //   return data === 'fanqie'
@@ -63,12 +68,12 @@ ajv.addKeyword('test', {
 })
 const validate = ajv.compile(schema)
 const valid = validate({
-  name: 'fanqie',
+  name: 123,
   age: 18,
   pets: ['123', '456'],
   isWorker: false,
 })
 if (!valid) {
-  localize.zh(validate.errors);
+  // localize.zh(validate.errors);
   console.log(validate.errors)
 }

@@ -4,12 +4,14 @@
  * @Author: 番茄
  * @Date: 2021-11-12 15:35:18
  * @LastEditors: 番茄
- * @LastEditTime: 2021-11-16 16:44:04
+ * @LastEditTime: 2021-11-22 16:32:10
 -->
 <template>
-  <img alt="Vue logo" src="./assets/logo.png" />
+  <img alt="Vue logo"
+       src="./assets/logo.png" />
   <HelloWorld msg="Welcome to Your Vue.js + TypeScript App" />
   {{ name }}
+
 </template>
 
 <script lang="ts">
