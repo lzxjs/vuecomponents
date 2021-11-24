@@ -4,27 +4,52 @@
  * @Author: 番茄
  * @Date: 2021-11-19 15:16:05
  * @LastEditors: 番茄
- * @LastEditTime: 2021-11-19 16:04:10
+ * @LastEditTime: 2021-11-24 14:39:31
  */
-import { defineComponent, reactive } from 'vue'
-import Hello from './components/HelloWorld.vue'
+import { defineComponent, Ref, ref } from 'vue'
+import MonacoEditor from './components/MonacoEditor'
+import { createUseStyles } from 'vue-jss'
 
-function renderHello(num: string) {
-  return <Hello msg={num} />
+function toJson(data: any) {
+  return JSON.stringify(data, null, 2)
 }
+
+const schema = {
+  type: 'string',
+}
+
+const useStyles = createUseStyles({
+  editor: {
+    minHeight: 400,
+  },
+})
+
 export default defineComponent({
   setup() {
-    const state = reactive({
-      name: 'fanqie',
-    })
+    const schemaRef: Ref<any> = ref(schema)
+    const handleCodeChange = (code: string) => {
+      let schema: any
+      try {
+        schema = JSON.parse(code)
+      } catch (error) {
+        console.log(error)
+      }
+      schemaRef.value = schema
+    }
+
+    const classesRef = useStyles()
 
     return () => {
+      const classes = classesRef.value
+      const code = toJson(schemaRef.value)
       return (
         <div>
-          123
-          <p>{state.name}</p>
-          {/* <Hello msg={'123hello'} /> */}
-          {renderHello('123')}
+          <MonacoEditor
+            class={classes.editor}
+            code={code}
+            onChange={handleCodeChange}
+            title="schema"
+          />
         </div>
       )
     }
