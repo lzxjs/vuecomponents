@@ -13,8 +13,11 @@
     "ajv-errors": "^1.0.1",
     "ajv-i18n": "^4.2.0",
     "core-js": "^3.6.5",
+    "json-schema-merge-allof": "^0.7.0",
+    "jsonpointer": "^4.1.0",
     "jss": "^10.8.2",
     "jss-preset-default": "^10.8.2",
+    "lodash.union": "^4.6.0",
     "vue": "^3.0.0",
     "vue-jss": "^0.0.4"
   },
@@ -44,7 +47,7 @@
     "webpack": "^4.0.0"
   },
   "gitHooks": {
-    "pre-commit": "lint-staged"
+
   },
   "lint-staged": {
     "*.{js,jsx,vue,ts,tsx}": [
@@ -53,3 +56,4 @@
     ]
   }
 }
+
